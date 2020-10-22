@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <h1>{{ title }}</h1>
+        <a
+            mat-button
+            [color]="routerLinkActive.isActive ? 'accent' : null"
+            routerLink="/route-based"
+            routerLinkActive="acitve"
+            #routerLinkActive="routerLinkActive"
+            >Router Based</a
+        >
+        <a mat-button routerLink="/content-projection-based"
+            >Content projection Based</a
+        >
+        <div class="spacer"></div>
+        <button
+            mat-button
+            (click)="authenticationService.signIn()"
+            *ngIf="!authenticationService.isAuthenticated"
+        >
+            Sign In
+        </button>
+        <button
+            mat-button
+            (click)="authenticationService.singOut()"
+            *ngIf="authenticationService.isAuthenticated"
+        >
+            Sign Out
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

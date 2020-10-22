@@ -1,0 +1,18 @@
+<button (click)="hidden = !hidden">Hide</button>
+<app-chat-wrapper>
+    <app-contact-list
+        [label]="1"
+        (contactSelected)="contactSelectedHandler($event)"
+    ></app-contact-list>
+    <app-contact-list
+        [label]="2"
+        *ngIf="!hidden"
+        #list2
+        (contactSelected)="contactSelectedHandler($event)"
+    ></app-contact-list>
+    <app-chat
+        [isLoading]="loading"
+        [contact]="contact"
+        [messages]="messages"
+    ></app-chat>
+</app-chat-wrapper>

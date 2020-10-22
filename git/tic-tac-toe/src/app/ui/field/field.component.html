@@ -1,0 +1,12 @@
+<ng-container *ngFor="let row of gameField; let rowIndex = index">
+  <app-cell
+    [value]="cell"
+    [row]="rowIndex"
+    [column]="columnIndex"
+    (cellClicked)="cellClickedHandler($event)"
+    *ngFor="let cell of row; let columnIndex = index"
+  ></app-cell>
+</ng-container>
+
+<H1 *ngIf="player === 'user'">Make your turn</H1>
+<h1 *ngIf="player === 'computer'">Wait for your turn</h1>

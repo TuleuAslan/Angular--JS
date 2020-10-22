@@ -1,0 +1,6 @@
+<h4>Tic Tac Toe</h4>
+<app-field
+  [gameField]="gameService.field"
+  (cellClicked)="gameService.cellClicked($event)"
+  [player]="gameService.currentPlayer"
+></app-field>

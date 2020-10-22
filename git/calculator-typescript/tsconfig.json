@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "moduleResolution": "Node",
+        "module": "CommonJS",
+        "outDir": "dist",
+        "lib": [
+            "DOM",
+            "ES2020"
+        ]
+    },
+    "include": [
+        "./src"
+    ]
+}

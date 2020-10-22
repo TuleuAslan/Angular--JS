@@ -1,0 +1,23 @@
+.variant {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px solid #ccc;
+    padding: 12px 0;
+
+    mat-form-field {
+        flex: 1 1 0;
+    }
+
+    &:last-of-type {
+        border-bottom: none;
+        margin-bottom: 24px;
+    }
+}
+
+.actions {
+    display: flex;
+    padding: 24px 0;
+    gap: 24px;
+}

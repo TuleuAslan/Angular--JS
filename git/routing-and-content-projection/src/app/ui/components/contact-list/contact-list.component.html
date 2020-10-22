@@ -1,0 +1,14 @@
+Label {{ label }}
+<mat-nav-list>
+    <mat-list-item
+        *ngFor="let contact of contacts"
+        (click)="navigateToChat(contact)"
+    >
+        {{ contact }}
+    </mat-list-item>
+</mat-nav-list>
+<div class="actions">
+    <button mat-button (click)="logoutHandler()">Logout</button>
+</div>
+
+<input type="text" id="test">

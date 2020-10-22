@@ -1,0 +1,24 @@
+<ui-questionnaire-list
+    [questionnaires]="questionnaires"
+    [selectedQuestionnaire]="selectedQuestionnaire"
+    (questionnaireSelected)="questionnaireSelectedHandler($event)"
+></ui-questionnaire-list>
+
+<ng-container
+    *ngIf="!selectedQuestionnaire; else selectedQuestionnaireTemplate"
+>
+    <ui-not-selected-questionnaire></ui-not-selected-questionnaire>
+    <button mat-fab (click)="create()">
+        <mat-icon>add</mat-icon>
+    </button>
+</ng-container>
+
+<ng-template #selectedQuestionnaireTemplate>
+    <ui-creation-form
+        #form
+        [questionnaire]="selectedQuestionnaire"
+    ></ui-creation-form>
+    <button mat-fab (click)="save(form.getQuestionnaire())">
+        <mat-icon>save</mat-icon>
+    </button>
+</ng-template>

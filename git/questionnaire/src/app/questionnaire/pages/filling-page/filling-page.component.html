@@ -1,0 +1,26 @@
+<ui-questionnaire-list
+    [questionnaires]="questionnaires"
+    [selectedQuestionnaire]="selectedQuestionnaire"
+    (questionnaireSelected)="questionnaireSelectedHandler($event)"
+></ui-questionnaire-list>
+
+<ng-container
+    *ngIf="!selectedQuestionnaire; else selectedQuestionnaireTemplate"
+>
+    <ui-not-selected-questionnaire></ui-not-selected-questionnaire>
+</ng-container>
+
+<ng-template #selectedQuestionnaireTemplate>
+    <ui-flex [grow]="1" [direction]="'column'">
+        <h1>{{ selectedQuestionnaire.name }}</h1>
+        <h2>Time left: {{ timeLeft }}</h2>
+        <mat-vertical-stepper>
+            <mat-step *ngFor="let question of questions; let index = index">
+                <ng-template matStepLabel
+                    >Question #{{ index + 1 }}</ng-template
+                >
+                <h3>{{ question.content }}</h3>
+            </mat-step>
+        </mat-vertical-stepper>
+    </ui-flex>
+</ng-template>

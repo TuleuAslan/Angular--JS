@@ -1,0 +1,9 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <h1 *ngIf="!isLoading">Chat with {{ contact }}</h1>
+        <h1 *ngIf="isLoading">Loading...</h1>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="messages">
+    <div class="message" *ngFor="let message of messages">{{ message }}</div>
+</div>

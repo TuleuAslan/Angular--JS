@@ -1,0 +1,24 @@
+<div class="labels-container">
+  <ng-container *ngFor="let tab of tabs">
+    <ng-container
+      *ngTemplateOutlet="
+      labelTemplate || defaultLabelTemplate;
+        context: { tab: tab, onClick: selectTab.bind(this) }
+      "
+    ></ng-container>
+  </ng-container>
+</div>
+<div class="tab-content" #tabContentPlacement>
+  <ng-content></ng-content>
+  <!-- <ng-container ></ng-container> -->
+</div>
+
+<ng-template #defaultLabelTemplate let-item="tab" let-onClick="onClick">
+  <div
+    class="tab-label"
+    (click)="onClick(item)"
+    [class.active]="item.isOpened"
+  >
+    {{ item.label }}
+  </div>
+</ng-template>

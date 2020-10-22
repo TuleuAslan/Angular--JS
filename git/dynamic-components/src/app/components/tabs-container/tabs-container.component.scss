@@ -1,0 +1,17 @@
+@import './../../../styles.scss';
+
+.labels-container {
+    display: flex;
+    gap: 12px;
+}
+
+.tab-label {
+    padding: 24px;
+    font-size: 20px;
+    cursor: pointer;
+
+    &.active {
+        color: mat-color($dynamic-components-accent);
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,12 @@
+<mat-selection-list
+    [multiple]="false"
+    (selectionChange)="selectionChangeHandler($event)"
+>
+    <mat-list-option
+        *ngFor="let questionnaire of questionnaires"
+        [value]="questionnaire"
+        [selected]="questionnaire === selectedQuestionnaire"
+    >
+        {{ questionnaire.name }}
+    </mat-list-option>
+</mat-selection-list>

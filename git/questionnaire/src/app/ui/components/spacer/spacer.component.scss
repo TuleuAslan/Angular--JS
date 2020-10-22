@@ -1,0 +1,17 @@
+:host {
+    &.left {
+        margin-left: auto;
+    }
+
+    &.right {
+        margin-right: auto;
+    }
+
+    &.top {
+        margin-top: auto;
+    }
+
+    &.bottom {
+        margin-bottom: auto;
+    }
+}

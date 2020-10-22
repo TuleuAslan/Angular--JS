@@ -1,0 +1,76 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>Forms Playground</mat-toolbar-row>
+</mat-toolbar>
+
+<div class="wrapper">
+    <section>
+        <h1>Template Driven</h1>
+
+        <form #templateDrivenForm="ngForm">
+            <input type="text" [(ngModel)]="login" name="login" alpha />
+            <input type="password" [(ngModel)]="password" name="password" />
+            <button type="submit" [disabled]="templateDrivenForm.invalid">
+                Submit
+            </button>
+        </form>
+        <pre>
+        {{ templateDrivenForm.value | json }}
+    </pre
+        >
+    </section>
+    <section>
+        <h1>Reactive</h1>
+        <form [formGroup]="loginForm">
+            <input type="text" name="login" [formControl]="loginCtrl" />
+            <input
+                type="password"
+                name="password"
+                [formControl]="passwordCtrl"
+            />
+            <button type="submit" [disabled]="loginForm.invalid">Submit</button>
+        </form>
+        <pre>
+        {{ loginForm.value | json }}
+    </pre
+        >
+    </section>
+</div>
+
+<div class="wrapper">
+    <form [formGroup]="form">
+        <input type="text" [formControl]="textControl" />
+        <input type="number" [formControl]="numberControl" />
+        <input
+            type="radio"
+            [value]="1"
+            name="nameofradio"
+            [formControl]="radioControl"
+        />
+        <input
+            type="radio"
+            [value]="2"
+            name="nameofradio"
+            [formControl]="radioControl"
+        />
+        <input type="checkbox" [formControl]="checkboxControl" />
+        <select [formControl]="selectControl">
+            <option [ngValue]="null">Default</option>
+            <option [ngValue]="1">1st</option>
+            <option [ngValue]="2">2nd</option>
+        </select>
+
+        <app-counter [formControl]="counterControl"></app-counter>
+    </form>
+</div>
+<app-counter [(ngModel)]="counterValue"></app-counter>
+<div class="wrapper">
+    <pre>counterValue: {{ counterValue }}</pre>
+</div>
+<div class="wrapper">
+    <pre>{{ form.value | json }}</pre>
+</div>
+
+<a routerLink="/create">Create</a>
+<a routerLink="/fill">Fill</a>
+
+<router-outlet></router-outlet>

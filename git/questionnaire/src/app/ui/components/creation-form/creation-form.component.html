@@ -1,0 +1,15 @@
+<mat-vertical-stepper>
+    <mat-step *ngFor="let question of questionnireCopy?.questions">
+        <ng-template matStepLabel>{{ question.content }}</ng-template>
+        <ui-question-form
+            [question]="question"
+            (removeQuestion)="removeQuestionHandler($event)"
+            (saveQuestion)="saveQuestionHandler($event)"
+            (cancelChanges)="cancelChangesHandler($event)"
+        ></ui-question-form>
+    </mat-step>
+</mat-vertical-stepper>
+
+<button mat-mini-fab color="primary" (click)="addQuestion()">
+    <mat-icon>add</mat-icon>
+</button>

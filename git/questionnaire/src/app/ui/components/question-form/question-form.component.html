@@ -1,0 +1,73 @@
+<h2>Question meta</h2>
+<mat-form-field>
+    <mat-label>Question content</mat-label>
+    <input type="text" matInput [formControl]="contentControl" />
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Question type</mat-label>
+    <mat-select [formControl]="typeControl">
+        <mat-option *ngFor="let type of questionTypes" [value]="type.type">{{
+            type.label
+        }}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Question time</mat-label>
+    <input type="number" matInput [formControl]="timeControl" />
+</mat-form-field>
+
+<ng-container *ngIf="typeControl.value != QuestionType.SingleValue">
+    <h2>Variants</h2>
+    <!-- <pre>
+        {{ variants | json }}
+    </pre> -->
+    <div class="variant" *ngFor="let variant of variants">
+        <mat-checkbox
+            *ngIf="typeControl.value === QuestionType.MultipleChoice"
+            [formControl]="variant.checkboxControl"
+        ></mat-checkbox>
+        <mat-radio-button
+            *ngIf="typeControl.value === QuestionType.SingleChoice"
+            [checked]="variant.checkboxControl.value"
+            (change)="varianAnswerChanged($event, variant)"
+            [name]="'variant-' + variant.variant.id"
+        ></mat-radio-button>
+        <!-- [name]="'question-' + question?.id" -->
+        <mat-form-field>
+            <mat-label>Variant content</mat-label>
+            <input
+                type="text"
+                matInput
+                [formControl]="variant.contentControl"
+            />
+        </mat-form-field>
+        <button mat-icon-button color="warn" (click)="deleteVariant(variant)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</ng-container>
+
+<div class="actions">
+    <button mat-raised-button color="accent" (click)="addVariant()">
+        Add variant
+    </button>
+    <button mat-raised-button color="accent" (click)="save()">
+        Save question
+    </button>
+    <button
+        mat-raised-button
+        color="warn"
+        (click)="cancelChanges.emit(questionCopy?.id)"
+    >
+        Cancel changes
+    </button>
+    <button
+        mat-raised-button
+        color="warn"
+        (click)="removeQuestion.emit(questionCopy?.id)"
+    >
+        Remove question
+    </button>
+</div>
