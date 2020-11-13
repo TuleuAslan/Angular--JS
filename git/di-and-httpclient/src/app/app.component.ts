@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
     constructor(public todoService: AsyncTodoService) {}
 
+    // tslint:disable-next-line:typedef
     async ngOnInit() {
         // this.todos = await this.todoService.getTodos();
 
